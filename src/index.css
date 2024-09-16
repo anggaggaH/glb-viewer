@@ -1,0 +1,77 @@
+@font-face {
+	font-family: 'mulish-thin';
+	src: url('./assets/font/Mulish-Light.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'mulish';
+	src: local('mulish'), url('./assets/font/Mulish-Regular.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'mulish-bold';
+	src: local('mulish-bold'), url('./assets/font/Mulish-Bold.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'mulish-italic';
+	src: local('mulish-italic'), url('./assets/font/Mulish-Italic.ttf') format('truetype');
+}
+
+/* INTER FONT */
+@font-face {
+	font-family: 'inter-thin';
+	src: url('./assets/font/InterThin.ttf') format('truetype');
+	font-display: swap;
+}
+@font-face {
+	font-family: 'inter-400';
+	src: url('./assets/font/Inter-Medium.ttf') format('truetype');
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'inter';
+	src: local('inter'), url('./assets/font/InterRegular.ttf') format('truetype');
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'inter-light';
+	src: local('inter-light'), url('./assets/font/Inter-Light.ttf') format('truetype');
+	font-display: swap;
+}
+@font-face {
+	font-family: 'inter-bold';
+	src: local('inter-bold'), url('./assets/font/InterBold.ttf') format('truetype');
+	font-display: swap;
+}
+
+:root {
+	/* Color */
+	--primary: #1976d2;
+	--success: #2c6d47;
+	--error: #d32f2f;
+	--weak: #6d6e6f;
+	--bzGreen: #2c6d47;
+	--bzGreenL: #7ac48d;
+	--bzOrange: #f16b26;
+	--bzOrangeL: #ff9d6c;
+	--bg-default: #f4f1ec;
+	--bg-app-default: #e1e1e1;
+	--bzMetallicYellow: '#fac710';
+	--bzRose: '#99636d';
+	--bzUbe: '#8e7dbe ';
+}
+body {
+	margin: 0;
+	font-family: 'mulish', -apple-system, BlinkMacSystemFont, 'Roboto', 'Segoe UI', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+		'Helvetica Neue', sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	overflow-x: hidden;
+
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}

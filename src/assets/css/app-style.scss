@@ -1,0 +1,220 @@
+@mixin btn-utils {
+	&.disabled,
+	&:disabled {
+		@apply opacity-70 cursor-not-allowed bg-[#d6d2cf] text-black border border-black;
+	}
+}
+
+@mixin i-placeholder {
+	input {
+		&::placeholder {
+			opacity: 1;
+		}
+	}
+}
+
+@mixin c-scrollable {
+	&::-webkit-scrollbar {
+		width: 2px !important;
+	}
+	/* Track */
+	&::-webkit-scrollbar-track {
+		background: var(--bg-default) !important;
+	}
+	/* Handle */
+	&::-webkit-scrollbar-thumb {
+		background: transparent !important;
+	}
+	/* Handle on hover */
+	&::-webkit-scrollbar-thumb:hover {
+		background: transparent !important;
+	}
+}
+
+.MuiInputLabel-root {
+	&.Mui-focused {
+		color: black !important;
+	}
+}
+.MuiOutlinedInput-root {
+	&.Mui-focused {
+		.MuiOutlinedInput-notchedOutline {
+			border-color: black !important;
+		}
+	}
+}
+
+.btn-utils {
+	@include btn-utils;
+}
+
+.layout {
+	@apply relative flex w-full h-full;
+}
+
+.app-container {
+	@apply w-full sm:w-[640px] sm:max-w-[640px] flex flex-1 mx-auto;
+}
+.inner-container {
+	@apply flex flex-1;
+}
+
+.food-grids {
+	@apply min-h-48 grid grid-cols-3 xl:grid-cols-4 gap-2 overflow-y-auto pb-24;
+}
+.food-cards {
+	@apply w-full h-full flex flex-col border border-black;
+	div {
+		@apply w-full flex flex-col gap-2 bg-white text-start px-1 py-1 relative;
+	}
+	img {
+		@apply w-full h-28 object-contain border-b border-black bg-bz-default;
+		aspect-ratio: 3 / 4;
+	}
+	.no-image {
+		@apply w-full h-28 bg-[#d6d2cf];
+		svg {
+			@apply w-full h-1/4 opacity-80 m-auto;
+		}
+	}
+	&.food-skeleton {
+		@apply h-1/4 transform-none;
+	}
+	div:first-child {
+		@apply h-28;
+	}
+	div:last-child {
+		@apply h-full justify-between;
+		span {
+			@apply line-clamp-2;
+		}
+	}
+	.collection {
+		@apply bg-bz-appDefault;
+	}
+	&.disabled {
+		div {
+			@apply bg-bz-default;
+		}
+		@apply opacity-50 cursor-not-allowed;
+	}
+}
+.carts {
+	@apply grid gap-1;
+	grid-template-columns: auto 38px 72px 80px 24px;
+	&.order {
+		grid-template-columns: auto 38px 72px 80px;
+	}
+	&.add-ons {
+		grid-template-columns: auto 88px 32px;
+		align-items: center;
+	}
+	&.items {
+		grid-template-columns: 32px auto 88px;
+		align-items: center;
+	}
+	&.items-child {
+		grid-template-columns: auto 88px;
+		align-items: center;
+	}
+	&.notes {
+		grid-template-columns: 32px 90px auto;
+		align-items: flex-start;
+	}
+	&.items-top-ups {
+		grid-template-columns: max-content auto 114px;
+		align-items: left;
+	}
+}
+.cart-divider {
+	@apply w-full my-2 border-t-2 border-black border-dotted;
+}
+.swiper-h {
+	margin-left: 0 !important;
+	.swiper-slide {
+		width: auto !important;
+		margin-right: 16px !important;
+
+		&.mr-1 {
+			margin-right: 4px !important;
+		}
+	}
+	&.m-auto {
+		margin: auto !important;
+	}
+}
+
+.date-picker {
+	input {
+		@apply h-3 pl-3 pr-0 py-3;
+	}
+	.MuiOutlinedInput-notchedOutline {
+		@apply border-2 rounded-sm border-black;
+	}
+}
+
+.search-dialog-container {
+	& > div:not(.input-search-bar) {
+		@apply h-10;
+		.wrapper {
+			@apply h-full z-[1000];
+			& div {
+				// @apply h-full;
+			}
+			& > div:first-child {
+				@apply flex flex-row-reverse h-[38px] min-h-[38px];
+				svg {
+					@apply mr-4;
+				}
+				input {
+					@apply p-0 px-4 h-[38px];
+					&:not(:last-child) {
+						@apply pl-0;
+					}
+				}
+			}
+			& > div:last-child {
+				ul {
+					@apply w-full bg-white p-0 pb-2;
+				}
+			}
+			.clear-icon {
+				@apply mx-0 ml-4 my-0;
+			}
+		}
+	}
+	.input-search-bar {
+		@apply h-[38px] pr-4 pl-8 w-full border-[1.25px] border-black bg-white rounded-3xl relative flex;
+		input {
+			@apply w-full h-full text-black;
+			&:focus-visible {
+				@apply outline-none;
+			}
+		}
+		svg {
+			fill: black;
+		}
+	}
+}
+
+.Toastify__toast {
+	&.Toastify__toast--success {
+		.Toastify__toast-icon {
+			svg {
+				fill: var(--bzGreen);
+			}
+		}
+		.Toastify__progress-bar--wrp {
+			div {
+				background: var(--bzGreen);
+			}
+		}
+	}
+}
+
+.btn-actions {
+	min-width: 50%;
+
+	@include btn-utils;
+	@apply flex items-center justify-center px-4 py-2 mx-auto rounded-md bg-black text-white;
+}

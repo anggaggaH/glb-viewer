@@ -1,0 +1,30 @@
+[
+    {
+      "title": "Bathroom Sink",
+      "description": "<p>Bathroom Sink is good for washing your hands</p>",
+      "camPos": {
+        "x": 0.37,
+        "y": -2,
+        "z": 6
+      },
+      "lookAt": {
+        "x": 0.37,
+        "y": -2,
+        "z": 6
+      }
+    },
+    {
+      "title": "Radiator",
+      "description": "Keeps you warm in winter.",
+      "camPos": {
+        "x": 7.13,
+        "y": 1.15,
+        "z": 2.66
+      },
+      "lookAt": {
+        "x": 0.78,
+        "y": 0.89,
+        "z": 0.68
+      }
+    }
+  ]
