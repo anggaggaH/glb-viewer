@@ -1,5 +1,5 @@
-/* eslint-disable react/no-unknown-property */
-import { Environment, Stats, OrbitControls, Html, useGLTF, useProgress } from '@react-three/drei';
+/* eslint-disable */
+import { Environment, Stats, OrbitControls, Html, useGLTF, useProgress, MapControls } from '@react-three/drei';
 import { Canvas, useLoader, useFrame, useThree } from '@react-three/fiber';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader';
 import annotations from './annotations.json';
@@ -65,29 +65,61 @@ function Annotations({ controls }) {
 		</>
 	);
 }
+function Controls() {
+	const { camera } = useThree();
+	const controlsRef = useRef();
+
+	const handleChange = () => {
+		const { x, y, z } = camera.position;
+		console.log({ x, y, z });
+
+		if (x > 11) {
+			controlsRef.current.target.x = 11;
+		}
+		if (x < 9) {
+			controlsRef.current.target.x = 9;
+		}
+	};
+
+	// useEffect(() => {
+	// 	controlsRef.current.addEventListener('change', function () {
+	// 		if (this.target.x > 10) {
+	// 			this.target.x = 10;
+	// 			camera.position.x = 10;
+	// 		}
+	// 	});
+	// }, []);
+
+	return <MapControls ref={controlsRef} onChange={handleChange} enableZoom={false} enableRotate={false} />;
+}
 function Loader() {
-	const { progress } = useProgress()
-	return <Html center>{progress} % loaded</Html>
-  }
+	const { progress } = useProgress();
+	return <Html center>{progress} % loaded</Html>;
+}
 function Tween() {
 	useFrame(() => {
 		TWEEN.update();
 	});
 }
+function Model({ url }) {
+	const { scene } = useGLTF(url);
+	return <primitive object={scene} />;
+}
 export default function Viewer() {
 	const ref = useRef();
 	const gltf = useLoader(GLTFLoader, '/models/glb-sample.glb');
-	const { nodes, materials } = gltf;
 
+	const { nodes, materials } = gltf;
 	return (
-		<Canvas camera={{ position: [12, 0, 0] }} shadows>
+		<Canvas camera={{ position: [12, 2, 0] }} shadows on>
 			<OrbitControls ref={ref} target={[0, 1, 0]} />
 			<directionalLight position={[3.3, 1.0, 4.4]} intensity={Math.PI} castShadow />
 
 			<Suspense fallback={<Loader />}>
+				{/* <Controls /> */}
 				<Environment preset='forest' background blur={0.5} />
 				{/* <primitive object={gltf.scene} position={[0, 1, 0]} children-0-castShadow /> */}
-				<group rotation={[-1.75, 0.5, 0.25]} scale={1}>
+				<group rotation={[-1.7, 0.5, -0.3]} scale={1}>
 					<mesh
 						geometry={nodes['Mesh_0_Part_0'].geometry}
 						material={materials.default_tex0}
@@ -96,11 +128,14 @@ export default function Viewer() {
 						material-depthWrite={false}
 					/>
 				</group>
+				{/* <group>
+					<Model url={'https://drive.google.com/file/d/11RwEOp23szWbeIgI4SemaWQ9R-_BginE/view'} />
+				</group> */}
 				<Annotations controls={ref} />
 				<Tween />
 			</Suspense>
 
-			{/* <axesHelper args={[5]} /> */}
+			<axesHelper args={[5]} />
 			<Stats />
 		</Canvas>
 	);
